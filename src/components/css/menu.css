@@ -1,0 +1,135 @@
+.menu-btn {
+	width: 48px;
+	height: 48px;
+  background-color: #354736;
+  border-radius: 10px;
+	position: relative;
+	z-index:2;
+	overflow: hidden;
+  cursor: pointer;
+}
+.menu-btn:hover{
+  background-color: #4f7450;
+}
+
+.menu-btn .bar {
+	width: 30px;
+	height: 4px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+  border-radius: 4px;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	transition: all 0.3s ease-in-out;
+}
+
+.menu-btn .bar:nth-of-type(2) {
+	top: calc(50% - 9px);
+}
+.menu-btn .bar:nth-of-type(3) {
+	top: calc(50% + 9px);
+}
+
+/* Меняем гамбургер иконку, когда меню открыто */
+.menu-btn.active .bar:nth-of-type(1) {
+  display: none;
+}
+.menu-btn.active .bar:nth-of-type(2) {
+  top: 50%;
+  transform: translate(-50%, 0%) rotate(45deg);  
+}
+.menu-btn.active .bar:nth-of-type(3) {
+  top: 50%;
+  transform: translate(-50%, 0%) rotate(-45deg); 
+}
+
+.menu-container{
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  width:300px;
+  background-color: #FFF;
+  position: fixed;
+  height: 150%;
+  top:0;
+  right:0;
+  z-index: 100;
+  transform:translateX(100%);
+}
+
+.menu-container-active{
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  width:300px;
+  background-color: #FFF;
+  position: absolute;
+  height: 150%;
+  top:0;
+  right:0;
+  z-index: 100;
+  transform:translateX(0);
+}
+
+.menu-container-active button{
+  width: 48px;
+  height: 48px;
+  background-color: #354736;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.menu-container-active button:hover{
+  background-color: #4f7450;
+}
+
+.menu-content-header{
+  display: flex;
+  width: 100%;
+  margin-right: 15px;
+  justify-content: space-between;
+  padding:10px;
+}
+
+.nav-burger-menu{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  height: 400px;
+}
+
+.nav-burger-item{
+  margin-bottom: 10px;
+  color:#000;
+}
+.nav-burger-item a{
+  color:#000;
+}
+
+.nav-burger-item a:hover {
+  color:#01371e
+}
+
+.nav-burger-button{
+  justify-self: end;
+  margin-left: 20px;
+}
+
+.nav-burger-button button{
+  width: 104px;
+  background-color: #FFFF;
+  border: 1px solid #354736;
+  color:#357234;
+}
+
+@media (min-width:800px) {
+  .menu-container{
+    display:none;
+  }
+  .menu-btn{
+    display:none;
+  }
+}

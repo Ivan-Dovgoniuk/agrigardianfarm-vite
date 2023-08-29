@@ -1,0 +1,60 @@
+.login-container {
+  display: flex;
+}
+
+.image-block {
+  display: flex;
+  width: 50%;
+  max-width: 950px;
+  height: 800px;
+  background-image: url('../../images/login-image.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.login-form-block{
+  display: 'flex';
+  justify-content: flex-start;
+  margin-top: 150px;
+  padding: 20px;
+  max-height: 1000px;
+}
+.login-form-block h1{
+  color:#000;
+  font-family: 'Montserrat';
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 120%;
+}
+.input {
+  max-width: 580px;
+  width: 100%;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.28);
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+.submit-button {
+  background-color: #354736;
+}
+.fogot-password-button{
+  background-color: #FFFF;
+  border: 1px solid #354736;
+  color:#357234;
+}
+
+@media(max-width:800px){
+  .login-container{
+    flex-direction:column;
+  }
+  .image-block{
+    height: 400px;
+    width:100%;
+  }
+  .login-form-block{
+    margin-top:10px;
+  }
+}
+
+
+

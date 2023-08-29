@@ -1,0 +1,21 @@
+.pagination-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  bottom: -20px;
+}
+.pagination-items-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:5px;
+  width: 100px;
+  height: 20px;
+}
+.pagination-item{
+  width: 8px;
+  height: 8px;
+  border-radius: 5px;
+}
