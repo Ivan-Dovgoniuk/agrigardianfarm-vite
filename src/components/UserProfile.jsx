@@ -5,6 +5,7 @@ import { Unsubscription } from "./Unsubscription";
 import { PaymentHistory } from "./PaymentHistory";
 import { Subscription } from "./Subscription";
 import { PaymentModal } from "./PaymentModal";
+import { PurchaseSuccess } from "./PurchaseSuccess";
 
 const BASE_URL = import.meta.env.VITE_REACT_APP_BASE_URL
 
@@ -16,6 +17,7 @@ export default function UserProfile() {
 	const [isPaymentHistoryVisible,setIsPaymentHistoryVisible] = useState(false)
 	const [isPaymentModalVisible,setIsPaymentModalVisible] = useState(false)
 	const [plan,setPlan] = useState(null)
+	const [isPurchaseSuccess,setIsPurchaseSuccess] = useState(false)
 
 	const userInfo = user?.userInfo
 
@@ -44,10 +46,13 @@ const renderSubscriptionInfo = ()=>{
 		}
 }
 
+	if(isPurchaseSuccess) return <PurchaseSuccess setIsPurchaseSuccess={setIsPurchaseSuccess}/>
+
 	return (
 		<>
 		{isPaymentModalVisible&& <PaymentModal 
 																	setIsPaymentModalVisible={setIsPaymentModalVisible}
+																	setIsPurchaseSuccess={setIsPurchaseSuccess}
 																	plan={plan}
 															/>}
 		{isConfirmVisible && <ConfirmModal 

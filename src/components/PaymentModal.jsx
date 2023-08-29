@@ -8,7 +8,8 @@ import crossIcon from "../images/cross-icon.png";
 
 export const PaymentModal = ({
   setIsPaymentModalVisible,
-  plan
+  plan,
+  setIsPurchaseSuccess
 })=>{
 
   const stripePromise = loadStripe("pk_live_51Kt9pVDXVoonsbUB1jP6gcD5kha0sL0oO2DytvTf9pOzRTrfVNWVTJ2fxnoBIx43HaNdAysc6kTnQNf8YGW7SEpG007WKFRjzw");
@@ -24,7 +25,7 @@ return(
         </div>
           <div className="payment-modal-form-block">
                 <Elements stripe={stripePromise}>
-                  <PaymentFormModal plan={plan}/>
+                  <PaymentFormModal plan={plan} setIsPurchaseSuccess={setIsPurchaseSuccess}/>
                 </Elements>
           </div>
       </div>

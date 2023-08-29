@@ -5,7 +5,8 @@ import { useState } from "react"
 const BASE_URL = import.meta.env.VITE_REACT_APP_BASE_URL
 
 export const PaymentFormModal =({
-  plan
+  plan,
+  setIsPurchaseSuccess
 })=>{
 
   const [email,setEmail] = useState('')
@@ -35,6 +36,7 @@ export const PaymentFormModal =({
       };
   fetch(`${BASE_URL}/create-subscription?email=` + email + "&token=" + token.id + "&plan=" + plan + "&coupon=" + coupon, params)
   .then(response => response.json())
+  .then(setIsPurchaseSuccess(true))
   .catch(error => {
     console.error("An error occurred:", error);
   });
