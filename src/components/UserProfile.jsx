@@ -7,7 +7,7 @@ import { Subscription } from "./Subscription";
 import { PaymentModal } from "./PaymentModal";
 import { PurchaseSuccess } from "./PurchaseSuccess";
 import { VoucherModal } from "./VoucherModal";
-import { ChangePasswordModal } from "./changePasswordModal";
+import { ChangePasswordModal } from "./ChangePasswordModal";
 
 const BASE_URL = import.meta.env.VITE_REACT_APP_BASE_URL
 
