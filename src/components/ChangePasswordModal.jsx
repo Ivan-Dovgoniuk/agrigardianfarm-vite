@@ -23,8 +23,6 @@ export const ChangePasswordModal = ({
     )
   },[newPasswordRepeat])
 
-  console.log(localStorage.getItem("token"))
-
   const hundleSubmit=(event)=>{
     event.preventDefault();
     const params = {
