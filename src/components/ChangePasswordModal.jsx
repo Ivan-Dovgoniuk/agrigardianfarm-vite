@@ -12,16 +12,18 @@ export const ChangePasswordModal = ({
 
   const [oldPassword,setOldPassword] = useState('')
   const [newPassword,setNewPassword] = useState('')
-  const [newPasswordRepeat,setNewPasswordRepeat] = useState(null)
+  const [newPasswordRepeat,setNewPasswordRepeat] = useState('')
   const [isPasswordCorrect,setIsNewPasswordCorrect] = useState(false)
 
   useEffect(()=>{
-    if(newPassword == newPasswordRepeat ){
+    if(newPassword == newPasswordRepeat && newPasswordRepeat.length !=0 ){
       setIsNewPasswordCorrect(true)
     }else(
       setIsNewPasswordCorrect(false)
     )
   },[newPasswordRepeat])
+
+  console.log(localStorage.getItem("token"))
 
   const hundleSubmit=(event)=>{
     event.preventDefault();
@@ -29,14 +31,16 @@ export const ChangePasswordModal = ({
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
       },
-      body:JSON.stringify({
+      body:{
         newPassword: newPassword,
         oldPassword: oldPassword
-      })
+      }
     };
     fetch(`${BASE_URL}users/master/password/edit`,params)
     .then(response =>{
+      console.log(response)
       if(response.status == 200){
         Swal.fire({
           imageUrl:iconSuccess,
@@ -47,10 +51,21 @@ export const ChangePasswordModal = ({
           color:'red'
       })
       setIsChangePasswordModalVisible(false)
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        })
       }
     })
     .catch(error => {
       console.error("An error occurred:", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      })
     });
   }
 

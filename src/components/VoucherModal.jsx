@@ -20,12 +20,14 @@ export const VoucherModal = ({
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        'Authorization': 'Bearer ' + localStorage.getItem("token")
       },
     };
     fetch(`${BASE_URL}create-subscription-voucher?email=` + email + "&voucherCode=" + voucherCode,params)
     .then(response =>{
       if(response.status == 200){
         setIsPurchaseSuccess(true)
+        setIsVoucherModalVisible(false)
       }else{
         Swal.fire({
           imageUrl:iconUnsuccess,
@@ -36,11 +38,14 @@ export const VoucherModal = ({
           color:'red'
       })
       }
-     
     })
-    .then(setIsVoucherModalVisible(false))
     .catch(error => {
       console.error("An error occurred:", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      })
     });
   }
 
