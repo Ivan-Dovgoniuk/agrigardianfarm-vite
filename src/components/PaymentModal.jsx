@@ -1,6 +1,7 @@
 import { Elements } from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js";
 import "./css/payment-modal.css";
+import "./css/checkout.css"
 import { PaymentFormModal } from "./PaymentFormModal";
 import crossIcon from "../images/cross-icon.png";
 

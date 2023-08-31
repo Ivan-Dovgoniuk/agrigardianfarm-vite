@@ -22,9 +22,6 @@ export const PaymentFormModal =({
     }
     const cardElement = elements.getElement(CardElement);
     const { token, error } = await stripe.createToken(cardElement);
-    console.log(token.id)
-    console.log(email)
-    console.log(plan)
     if (error) {
       console.error(error);
     } else {

@@ -2,7 +2,8 @@ import { Popular } from "./Popular"
 
 export const UnsubscriptionCards = ({
   setPlan,
-  setIsPaymentModalVisible
+  setIsPaymentModalVisible,
+  setIsVoucherModalVisible
 })=>{
 
   const handleGetSubscription=(plan)=>{
@@ -74,7 +75,10 @@ export const UnsubscriptionCards = ({
       </h3>
       <p>Activate a subscription by paid voucher</p>
       <a>
-        <button className="unsubscription-button">
+        <button 
+            className="unsubscription-button"
+            onClick={()=>setIsVoucherModalVisible(true)}
+        >
           Use voucher
         </button>
       </a>

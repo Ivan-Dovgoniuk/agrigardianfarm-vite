@@ -9,7 +9,8 @@ import { SliderPagination } from './SliderPagination';
 
 const UnsubscriptionCardsSlider = ({
   setPlan,
-  setIsPaymentModalVisible
+  setIsPaymentModalVisible,
+  setIsVoucherModalVisible
 })=>{
 
   const [slide,setSlide] = useState(0)
@@ -96,7 +97,10 @@ const UnsubscriptionCardsSlider = ({
         </h3>
         <p>Activate a subscription by paid voucher</p>
         <a>
-          <button className="unsubscription-button-mobile">
+          <button 
+              className="unsubscription-button-mobile"
+              onClick={()=>setIsVoucherModalVisible(true)}
+          >
             Use voucher
           </button>
         </a>
@@ -109,7 +113,8 @@ const UnsubscriptionCardsSlider = ({
 
 export const Unsubscription =({
   setPlan,
-  setIsPaymentModalVisible
+  setIsPaymentModalVisible,
+  setIsVoucherModalVisible
 })=>{
 
   const [windowWidth,setWindowWidth] = useState(window.innerWidth);
@@ -149,10 +154,12 @@ export const Unsubscription =({
            {!isMobile && <UnsubscriptionCards 
                                 setPlan={setPlan}
                                 setIsPaymentModalVisible={setIsPaymentModalVisible}
+                                setIsVoucherModalVisible={setIsVoucherModalVisible}
            />}
            {isMobile && <UnsubscriptionCardsSlider
                                 setPlan={setPlan}
                                 setIsPaymentModalVisible={setIsPaymentModalVisible}
+                                setIsVoucherModalVisible={setIsVoucherModalVisible}
            />}
     </div>
   </>

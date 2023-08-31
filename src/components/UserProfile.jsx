@@ -6,6 +6,8 @@ import { PaymentHistory } from "./PaymentHistory";
 import { Subscription } from "./Subscription";
 import { PaymentModal } from "./PaymentModal";
 import { PurchaseSuccess } from "./PurchaseSuccess";
+import { VoucherModal } from "./VoucherModal";
+import { ChangePasswordModal } from "./changePasswordModal";
 
 const BASE_URL = import.meta.env.VITE_REACT_APP_BASE_URL
 
@@ -16,6 +18,8 @@ export default function UserProfile() {
 	const [isConfirmVisible,setIsConfirmVisible] = useState(false)
 	const [isPaymentHistoryVisible,setIsPaymentHistoryVisible] = useState(false)
 	const [isPaymentModalVisible,setIsPaymentModalVisible] = useState(false)
+	const [isVoucherModalVisible,setIsVoucherModalVisible] = useState(false)
+	const [isChangePasswordModalVisible,setIsChangePasswordModalVisible] = useState(false)
 	const [plan,setPlan] = useState(null)
 	const [isPurchaseSuccess,setIsPurchaseSuccess] = useState(false)
 
@@ -41,6 +45,7 @@ const renderSubscriptionInfo = ()=>{
 							/>
 		}else if(status && status == 'HAVE_NOT_SUB'){
 			return <Unsubscription setIsPaymentModalVisible={setIsPaymentModalVisible}
+														 setIsVoucherModalVisible={setIsVoucherModalVisible}
 														 setPlan={setPlan}
 							/>
 		}
@@ -50,10 +55,18 @@ const renderSubscriptionInfo = ()=>{
 
 	return (
 		<>
-		{isPaymentModalVisible&& <PaymentModal 
+		{isChangePasswordModalVisible && <ChangePasswordModal
+																							setIsChangePasswordModalVisible={setIsChangePasswordModalVisible}
+																		/>}
+		{isPaymentModalVisible && <PaymentModal 
 																	setIsPaymentModalVisible={setIsPaymentModalVisible}
 																	setIsPurchaseSuccess={setIsPurchaseSuccess}
 																	plan={plan}
+															/>}
+		{isVoucherModalVisible && <VoucherModal
+																	setIsVoucherModalVisible={setIsVoucherModalVisible}
+																	setIsPurchaseSuccess={setIsPurchaseSuccess}
+																	email={userInfo?.username}
 															/>}
 		{isConfirmVisible && <ConfirmModal 
 															setIsConfirmVisible={setIsConfirmVisible} 
@@ -93,7 +106,7 @@ const renderSubscriptionInfo = ()=>{
 									{userInfo?.username}
 								</span>
 							</p>
-							<button className="change-password-button">
+							<button className="change-password-button" onClick={()=>setIsChangePasswordModalVisible(true)}>
 								Change Password
 							</button>
 						</div>
