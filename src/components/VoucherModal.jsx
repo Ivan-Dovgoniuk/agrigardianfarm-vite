@@ -23,7 +23,7 @@ export const VoucherModal = ({
         'Authorization': 'Bearer ' + localStorage.getItem("token")
       },
     };
-    fetch(`${BASE_URL}create-subscription-voucher?email=` + email + "&voucherCode=" + voucherCode,params)
+    fetch(`${BASE_URL}stripe-pay/create-subscription-voucher?email=` + email + "&voucherCode=" + voucherCode,params)
     .then(response =>{
       if(response.status == 200){
         setIsPurchaseSuccess(true)

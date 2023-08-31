@@ -36,7 +36,7 @@ export default function UserProfile() {
 				setUser(res)
 				setStatus(res.subName)
 		});
-}, [])
+}, [isPurchaseSuccess])
 
 const renderSubscriptionInfo = ()=>{
 		if(status && status == 'HAVE_SUB'){
