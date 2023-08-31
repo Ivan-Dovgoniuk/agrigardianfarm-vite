@@ -33,10 +33,10 @@ export const ChangePasswordModal = ({
         "Content-Type": "application/json",
         'Authorization': 'Bearer ' + localStorage.getItem("token")
       },
-      body:{
+      body:JSON.stringify({
         newPassword: newPassword,
         oldPassword: oldPassword
-      }
+      })
     };
     fetch(`${BASE_URL}users/master/password/edit`,params)
     .then(response =>{
@@ -47,8 +47,8 @@ export const ChangePasswordModal = ({
           imageWidth: 250,
           imageHeight: 250,
           imageAlt: 'Custom image',
-          title: 'Voucher code is not correct!',
-          color:'red'
+          title: 'Password successfully changed!',
+          color:'green'
       })
       setIsChangePasswordModalVisible(false)
       }else{
